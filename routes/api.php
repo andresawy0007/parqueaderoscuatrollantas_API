@@ -16,3 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('vehiculos')->group(function () {
+    Route::get('new', 'VehiculoController@createVehiculo')->name('vehiculos.new');
+});
+// Route::group(['middleware' => 'auth:api', 'prefix' => 'vehiculos'], function() {
+//     Route::post('new', 'VehiculoController@createVehiculo')->name('vehiculos.new');
+// });
