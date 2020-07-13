@@ -9,5 +9,9 @@ class Tipos_vehiculos extends Model
 {
     use SoftDeletes;
     protected $table = 'forrll_tipos_vehiculos';
-    //
+    
+    public function vehiculos()
+    {
+        return $this->hasMany('App\Models\Vehiculos', 'propietario_vehiculo_id');
+    }
 }

@@ -18,6 +18,7 @@ class CreateVehiculosTable extends Migration
             $table->string('placa', 20);
             $table->unsignedBigInteger('tipo_vehiculo_id');
             $table->unsignedBigInteger('marca_vehiculo_id');
+            $table->unsignedBigInteger('propietario_vehiculo_id');
             
             // Time and softdelete 
             $table->timestamps();
@@ -26,6 +27,7 @@ class CreateVehiculosTable extends Migration
             // Foreign keys
             $table->foreign('tipo_vehiculo_id')->references('id')->on('forrll_tipos_vehiculos');
             $table->foreign('marca_vehiculo_id')->references('id')->on('forrll_marcas_vehiculos');
+            $table->foreign('propietario_vehiculo_id')->references('id')->on('forrll_propietarios_vehiculos');
         });
     }
 
