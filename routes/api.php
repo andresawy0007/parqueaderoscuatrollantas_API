@@ -18,7 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('vehiculos')->group(function () {
-    Route::get('new', 'VehiculoController@createVehiculo')->name('vehiculos.new');
+    Route::post('new', 'VehiculoController@createVehiculo')->name('vehiculos.new');
+    Route::get('search', 'VehiculoController@findVehiculo')->name('vehiculos.search');
+});
+Route::prefix('marcas')->group(function () {
+    Route::get('list', 'MarcaController@vehiculosPorMarcas')->name('marcas.list');
 });
 // Route::group(['middleware' => 'auth:api', 'prefix' => 'vehiculos'], function() {
 //     Route::post('new', 'VehiculoController@createVehiculo')->name('vehiculos.new');

@@ -16,7 +16,6 @@ class CreatePropietariosVehiculosTable extends Migration
         Schema::create('forrll_propietarios_vehiculos', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nombres');
-            $table->string('apellidos');
             $table->integer('cedula');
 
             // Time and softdelete 
