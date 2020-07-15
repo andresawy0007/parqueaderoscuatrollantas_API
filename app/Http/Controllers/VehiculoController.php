@@ -34,6 +34,7 @@ class VehiculoController extends Controller
             return response()->json(array(
                 "result" => false,
                 "code" => 'invalid_param',
+                'line' => __line__
             ), 200);
         }
         $params = array('propietario_cedula' => null, 'propietario_nombres'  => null, 'tipo'  => null, 'marca'  => null, 'placa'  => null);
@@ -48,7 +49,8 @@ class VehiculoController extends Controller
         if(!$valid_request){
             return response()->json(array(
                 "result" => false,
-                "code" => "invalid_param"
+                "code" => "invalid_param",
+                'line' => __line__
             ), 200);
         }
         $validator = \Validator::make($params, [
@@ -61,7 +63,8 @@ class VehiculoController extends Controller
         if($validator->fails()){
             return response()->json(array(
                 "result" => false,
-                "code" => "invalid_param"
+                "code" => "invalid_param",
+                'line' => __line__
             ), 200);
         }
         
@@ -77,7 +80,8 @@ class VehiculoController extends Controller
         if(!$marca){
             return response()->json(array(
                 "result" => false,
-                "code" => "invalid_marca"
+                "code" => "invalid_marca",
+                'line' => __line__
             ), 200);
         }
 
@@ -85,7 +89,8 @@ class VehiculoController extends Controller
         if(!$tipo){
             return response()->json(array(
                 "result" => false,
-                "code" => "invalid_tipo"
+                "code" => "invalid_tipo",
+                'line' => __line__
             ), 200);
         }
         
@@ -93,7 +98,8 @@ class VehiculoController extends Controller
         if($vehiculo){
             return response()->json(array(
                 "result" => false,
-                "code" => "vehiculo_exist"
+                "code" => "vehiculo_exist",
+                'line' => __line__
             ), 200);
         }
 
@@ -116,7 +122,8 @@ class VehiculoController extends Controller
         
         return response()->json(array(
             "result" => false,
-            "code" => "error_save"
+            "code" => "error_save",
+            'line' => __line__
         ));
 
     }

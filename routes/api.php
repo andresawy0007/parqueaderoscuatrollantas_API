@@ -16,14 +16,10 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::prefix('vehiculos')->group(function () {
-    Route::post('new', 'VehiculoController@createVehiculo')->name('vehiculos.new');
-    Route::get('search', 'VehiculoController@findVehiculo')->name('vehiculos.search');
-});
-Route::prefix('marcas')->group(function () {
-    Route::get('list', 'MarcaController@vehiculosPorMarcas')->name('marcas.list');
-});
-// Route::group(['middleware' => 'auth:api', 'prefix' => 'vehiculos'], function() {
-//     Route::post('new', 'VehiculoController@createVehiculo')->name('vehiculos.new');
-// });
+    Route::prefix('vehiculos')->group(function () {
+        Route::post('new', 'VehiculoController@createVehiculo')->name('vehiculos.new')->middleware('cros');
+        Route::get('search', 'VehiculoController@findVehiculo')->name('vehiculos.search')->middleware('cros');
+    });
+    Route::prefix('marcas')->group(function () {
+        Route::get('list','MarcaController@vehiculosPorMarcas')->name('marcas.list')->middleware('cros');
+    });

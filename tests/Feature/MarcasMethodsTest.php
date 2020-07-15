@@ -17,7 +17,7 @@ class MarcasMethodsTest extends TestCase
     {
         
         $this->get(route('marcas.list'))
-            ->assertStatus(200)
+            ->dump()->assertStatus(200)
             ->assertJsonStructure([
                 'result',
                 'data' => []
